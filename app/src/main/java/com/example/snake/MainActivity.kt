@@ -21,11 +21,10 @@ class MainActivity : Activity() {
 
         val board = binding.board
         val border = binding.relativeLayout
-        val lilu = binding.lilu
-        val upButton = binding.up
-        val downButton = binding.down
-        val leftButton = binding.left
-        val rightButton = binding.right
+        val upButton = binding.btnUp
+        val downButton = binding.btnDown
+        val leftButton = binding.btnRight
+        val rightButton = binding.btnLeft
         val newGame = binding.newGame
         val playAgain = binding.playagain
         val meat = ImageView(this)
@@ -77,9 +76,7 @@ class MainActivity : Activity() {
                 val distance = sqrt((snake.x - meat.x).pow(2) + (snake.y - meat.y).pow(2))
 
                 if (distance < distanceThreshold) {
-
-                    val newSnake =
-                        ImageView(this)
+                    val newSnake = ImageView(this)
                     newSnake.setImageResource(R.drawable.snake)
                     newSnake.layoutParams = ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -89,16 +86,18 @@ class MainActivity : Activity() {
 
                     snakeSegments.add(newSnake)
 
-                    val randomX =
-                        random.nextInt(801) - -100
-                    val randomY =
-                        random.nextInt(801) - -100
+                    // Генерация новых координат для еды в пределах размеров экрана
+                    val maxX = board.width - meat.width
+                    val maxY = board.height - meat.height
+                    val randomX = random.nextInt(maxX)
+                    val randomY = random.nextInt(maxY)
                     meat.x = randomX.toFloat()
                     meat.y = randomY.toFloat()
                     delayMillis--
                     scorex++
                 }
             }
+
 
             val runnable = object : Runnable {
                 override fun run() {
@@ -116,7 +115,10 @@ class MainActivity : Activity() {
                                 border.setBackgroundColor(getResources().getColor(R.color.red))
                                 playAgain.visibility = View.VISIBLE
                                 currentDirection = "pause"
-                                lilu.visibility = View.INVISIBLE
+                                upButton.visibility = View.INVISIBLE
+                                downButton.visibility = View.INVISIBLE
+                                leftButton.visibility = View.INVISIBLE
+                                rightButton.visibility = View.INVISIBLE
                             }
 
                             snake.translationY = snakeY
@@ -131,7 +133,10 @@ class MainActivity : Activity() {
                                 border.setBackgroundColor(getResources().getColor(R.color.red))
                                 playAgain.visibility = View.VISIBLE
                                 currentDirection = "pause"
-                                lilu.visibility = View.INVISIBLE
+                                upButton.visibility = View.INVISIBLE
+                                downButton.visibility = View.INVISIBLE
+                                leftButton.visibility = View.INVISIBLE
+                                rightButton.visibility = View.INVISIBLE
                             }
                             snake.translationY = snakeY
                         }
@@ -143,7 +148,10 @@ class MainActivity : Activity() {
                                 border.setBackgroundColor(getResources().getColor(R.color.red))
                                 playAgain.visibility = View.VISIBLE
                                 currentDirection = "pause"
-                                lilu.visibility = View.INVISIBLE
+                                upButton.visibility = View.INVISIBLE
+                                downButton.visibility = View.INVISIBLE
+                                leftButton.visibility = View.INVISIBLE
+                                rightButton.visibility = View.INVISIBLE
                             }
                             snake.translationX = snakeX
                         }
@@ -157,13 +165,11 @@ class MainActivity : Activity() {
                                 border.setBackgroundColor(getResources().getColor(R.color.red))
                                 playAgain.visibility = View.VISIBLE
                                 currentDirection = "pause"
-                                lilu.visibility = View.INVISIBLE
+                                upButton.visibility = View.INVISIBLE
+                                downButton.visibility = View.INVISIBLE
+                                leftButton.visibility = View.INVISIBLE
+                                rightButton.visibility = View.INVISIBLE
                             }
-                            snake.translationX = snakeX
-                        }
-
-                        "pause" -> {
-                            snakeX += 0
                             snake.translationX = snakeX
                         }
                     }

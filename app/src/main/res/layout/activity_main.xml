@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context="com.example.snake.MainActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="390dp"
         android:background="@color/white"
         android:gravity="center"
@@ -20,105 +20,60 @@
             android:id="@+id/new_game"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="130dp"
-            android:layout_marginEnd="130dp"
             android:background="@color/purple_700"
-            android:text="New Game"
-            app:layout_constraintEnd_toEndOf="@id/relativeLayout"
-            app:layout_constraintTop_toTopOf="@id/relativeLayout" />
+            android:text="START" />
 
         <Button
             android:id="@+id/playagain"
             android:layout_width="150dp"
             android:layout_height="80dp"
-            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
-            android:layout_marginEnd="120dp"
             android:background="@color/red"
             android:text="Game Over ! Play Again"
             android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/relativeLayout"
-            app:layout_constraintTop_toTopOf="@id/relativeLayout" />
+            android:textSize="20sp" />
 
         <RelativeLayout
             android:id="@+id/board"
-            android:layout_width="380dp"
+            android:layout_width="match_parent"
             android:layout_height="380dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="5dp"
             android:background="@color/black"
             android:gravity="center"
-            tools:ignore="MissingConstraints"></RelativeLayout>
+            tools:ignore="MissingConstraints" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/lilu"
-        android:layout_width="330dp"
-        android:layout_height="330dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/btn_up"
+        style="@style/base_button_style"
+        android:layout_marginTop="20dp"
+        android:text="Up"
+        app:layout_constraintEnd_toEndOf="@id/relativeLayout"
+        app:layout_constraintStart_toStartOf="@id/relativeLayout"
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout" />
+
+    <Button
+        android:id="@+id/btn_left"
+        style="@style/base_button_style"
+        android:text="Left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_up" />
+
+    <Button
+        android:id="@+id/btn_right"
+        style="@style/base_button_style"
+        android:text="right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_up" />
+
+    <Button
+        android:id="@+id/btn_down"
+        style="@style/base_button_style"
+        android:text="Down"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/up"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text="UP" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/left"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text="LEFT" />
-
-            <Button
-                android:id="@+id/right"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text="RIGHT" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/down"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:text="DOWN" />
-        </LinearLayout>
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/btn_right" />
 </androidx.constraintlayout.widget.ConstraintLayout>
