@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Snake"
 include ':app'
+include ':snakeLogic'
+include ':SnakeGameLogic'
